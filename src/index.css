@@ -4,52 +4,86 @@
 
 :root {
   --color-primary-blue: #1F2BFF;
-  --color-deep-blue: #1A22CC;
-  --color-accent-teal: #00F0B5;
-  --color-white: #FFFFFF;
-  --color-dark-navy: #0B0F3B;
-  --color-light-bg: #F5F7FF;
-
-  --color-playful-sky: #6FCFDD;
-  --color-playful-green: #00A550;
-  --color-playful-yellow: #FFB000;
-  --color-playful-orange: #F2603A;
-  --color-playful-cream: #FCEFE0;
-  --color-playful-border: #10142B;
+  --color-dark-navy: #0B1240;
+  --color-accent-mint: #14F5B0;
+  --color-warm-amber: #FFB300;
+  --color-orange-red: #F0552B;
+  --color-sky-blue: #6ECFE0;
+  --color-grass-green: #00A651;
+  --color-lime: #C8F560;
+  --color-cream: #FDF0E1;
+  --color-bg: #F5F7FF;
 }
 
 body {
   margin: 0;
   font-family: 'Poppins', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--color-light-bg);
+  background-color: var(--color-bg);
   color: var(--color-dark-navy);
+  overflow-x: hidden;
 }
 
-/* EduChain Full-Width Royal Blue Hero with Subtle Isometric Grid Overlay */
-.bg-educhain-hero {
+/* Isometric Hero Grid lines */
+.bg-isometric-grid {
   background-color: #1F2BFF;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-/* Floating Tilted (Isometric) 3D Square Tiles */
-.tile-isometric {
-  transform: rotateX(15deg) rotateY(-18deg) rotateZ(8deg);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+/* 3D Isometric floating tilt for hero tiles */
+.tile-isometric-3d {
+  transform: rotateX(24deg) rotateY(-22deg) rotateZ(12deg);
+  transform-style: preserve-3d;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tile-isometric:hover {
-  transform: rotateX(6deg) rotateY(-8deg) rotateZ(3deg) translateY(-6px);
+.tile-isometric-3d:hover {
+  transform: rotateX(12deg) rotateY(-10deg) rotateZ(5deg) translateY(-8px) scale(1.04);
+  box-shadow: 0 25px 35px -5px rgba(11, 18, 64, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Playful Flat Illustrated Pattern (Sky + Ground) */
-.bg-playful-section {
-  background: linear-gradient(180deg, #6FCFDD 0%, #6FCFDD 65%, #00A550 65%, #00A550 100%);
+/* Neo-brutalist interaction */
+.neo-press {
+  transition: all 0.15s ease-out;
+}
+.neo-press:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #0B1240;
+}
+.neo-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #0B1240;
 }
 
-/* Smooth Transition Defaults */
-button, a, input, select {
-  transition: all 200ms ease;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F7FF;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 3px solid #14F5B0;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

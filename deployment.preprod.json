@@ -1,0 +1,11 @@
+{
+  "network": "preprod",
+  "contractAddress": "d5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3",
+  "bech32mAddress": "mn_addr_preprod1d5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7",
+  "deployedAt": "2026-09-27T05:00:44.701Z",
+  "parameters": {
+    "adminPublicKeyHex": "fe13f10d9175c242b3798beee0212a44ccdfb88a6b33224695d4cf3b3b149f61",
+    "adminAuthority": "0xfe13f10d9175c242b3798beee0212a44ccdfb88a6b33224695d4cf3b3b149f61"
+  },
+  "status": "configured"
+}

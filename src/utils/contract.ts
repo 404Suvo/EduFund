@@ -87,8 +87,8 @@ export class EduFundContractService {
 
   constructor() {
     this.state = {
-      contractAddress: 'addr_preprod165647566756e645f7363686f6c6172736869705f636f6e74',
-      adminAddress: 'addr_preprod1_admin_authority_edu',
+      contractAddress: '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3',
+      adminAddress: 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j',
       totalPool: 2500000n, // 2,500,000 tNIGHT
       totalDisbursed: 1045000n,
       merchants: [...INITIAL_MERCHANTS],

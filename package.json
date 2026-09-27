@@ -11,17 +11,31 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy:preprod": "node ./scripts/deploy.js"
+    "deploy:preprod": "node --max-old-space-size=8192 ./scripts/deploy.js preprod",
+    "deploy:preview": "node --max-old-space-size=8192 ./scripts/deploy.js preview"
   },
   "dependencies": {
     "@midnight-ntwrk/compact-runtime": "^0.16.0",
     "@midnight-ntwrk/midnight-js-contracts": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-http-client-proof-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-level-private-state-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-network-id": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-node-zk-config-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-protocol": "^4.1.1",
     "@midnight-ntwrk/midnight-js-types": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-utils": "^4.1.1",
+    "@midnight-ntwrk/testkit-js": "^4.1.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^13.4.3",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.0.2"
+    "react-router-dom": "^7.18.4",
+    "recharts": "^3.10.1",
+    "rxjs": "^7.8.2",
+    "tailwind-merge": "^3.0.2",
+    "ws": "^8.22.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.9",
