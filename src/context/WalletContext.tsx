@@ -30,7 +30,7 @@ const WalletContext = createContext<WalletContextType | undefined>(undefined);
 
 export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isConnected, setIsConnected] = useState<boolean>(true);
-  const [walletAddress, setWalletAddress] = useState<string>('mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j');
+  const [walletAddress, setWalletAddress] = useState<string>('mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf');
   const [userRole, setUserRole] = useState<UserRole>('student');
   const [isConnectModalOpen, setIsConnectModalOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -43,7 +43,8 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       if (stored) {
         const parsed = JSON.parse(stored);
         const hasAnchor = parsed.some((t: Transaction) => 
-          t.hash?.toLowerCase() === '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3'.toLowerCase()
+          t.hash?.toLowerCase() === '0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196'.toLowerCase() ||
+          t.toAddress?.toLowerCase() === '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318'.toLowerCase()
         );
         const hasOldMocks = parsed.some((t: Transaction) => 
           t.hash?.startsWith('0x7f83a21b44ec') || (t.hash && t.hash.length < 50)

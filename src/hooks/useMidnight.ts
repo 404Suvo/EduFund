@@ -44,14 +44,14 @@ export function useMidnight(): MidnightWalletState {
         // Direct integration with Midnight Lace Wallet provider
         const api = await midnightLace.enable();
         const state = await api.state();
-        setAddress(state.address || 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j');
+        setAddress(state.address || 'mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf');
         setIsConnected(true);
         setNetworkId('preprod');
       } else {
         // Fallback to demo/sandbox mode on Preprod for seamless evaluation
         console.info('[EduFund] Midnight Lace extension not detected. Initializing Preprod Sandbox Session.');
         await new Promise((resolve) => setTimeout(resolve, 600));
-        setAddress('mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j');
+        setAddress('mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf');
         setIsConnected(true);
         setNetworkId('preprod');
       }

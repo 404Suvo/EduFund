@@ -22,24 +22,25 @@ export interface Transaction {
  * on the Midnight Preprod Network.
  *
  * Genesis Transaction (tx-01):
- * Hash: 0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3
+ * Extrinsic: 0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196
+ * Contract: 0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318
  */
 
 export const ON_CHAIN_TRANSACTIONS: Transaction[] = [
   {
     id: 'tx-01',
-    hash: '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3',
-    fromName: 'EduFund Foundation Treasury (Preprod Genesis)',
-    fromAddress: 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j',
-    toName: 'EduFund Smart Contract Pool (Consensus Verified)',
-    toAddress: 'addr_preprod165647566756e645f7363686f6c6172736869705f636f6e74',
+    hash: '0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196',
+    fromName: 'EduFund Deployer Authority (Preprod Genesis)',
+    fromAddress: 'mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf',
+    toName: 'EduFund Smart Contract (Consensus Verified)',
+    toAddress: '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318',
     amount: 2500000,
     category: 'Contract Deployment & Treasury Pool Funding',
     status: 'Verified On-Chain',
-    timestamp: '2026-09-27T01:00:00Z',
-    blockNumber: 4892104,
+    timestamp: '2026-09-28T19:42:22Z',
+    blockNumber: 2751144,
     programId: 'prog-01',
-    purpose: 'EduFund Compact Smart Contract Deployment & Initial Treasury Liquidity Pool on Midnight Preprod (Tx: 0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3)',
+    purpose: 'EduFund Compact Smart Contract Deployment on Midnight Preprod (Contract: 0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318)',
     merchantType: 'Preprod Consensus Node',
   },
   {

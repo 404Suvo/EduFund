@@ -1,11 +1,11 @@
 {
   "network": "preprod",
-  "contractAddress": "d5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3",
-  "bech32mAddress": "mn_addr_preprod1d5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7",
-  "deployedAt": "2026-09-27T05:00:44.701Z",
+  "contractAddress": "63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318",
+  "bech32mAddress": "mn_addr_preprod163afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc",
+  "deployedAt": "2026-09-28T19:42:22.526Z",
   "parameters": {
-    "adminPublicKeyHex": "fe13f10d9175c242b3798beee0212a44ccdfb88a6b33224695d4cf3b3b149f61",
-    "adminAuthority": "0xfe13f10d9175c242b3798beee0212a44ccdfb88a6b33224695d4cf3b3b149f61"
+    "adminPublicKeyHex": "c78d2c6a574ca650b017674bdc584beedefc3710f38cc9a732b986a4917b28ea",
+    "adminAuthority": "0xc78d2c6a574ca650b017674bdc584beedefc3710f38cc9a732b986a4917b28ea"
   },
-  "status": "configured"
+  "status": "deployed"
 }

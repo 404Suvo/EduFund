@@ -23,7 +23,7 @@ export const Explorer: React.FC = () => {
   const initialSelectedTxId = searchParams.get('tx') || undefined;
   const [isDeployModalOpen, setIsDeployModalOpen] = useState<boolean>(false);
   const [contractAddress, setContractAddress] = useState<string>(
-    '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3'
+    '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318'
   );
   return (
     <div className="min-h-screen bg-[#F5F7FF] pb-24 transition-colors">
@@ -65,7 +65,7 @@ export const Explorer: React.FC = () => {
               </div>
               <div className="text-[11px] text-slate-500 font-mono mt-0.5 flex items-center gap-1.5 flex-wrap">
                 <span>Genesis On-Chain Tx:</span>
-                <span className="text-[#1F2BFF] font-semibold">0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3</span>
+                <span className="text-[#1F2BFF] font-semibold">0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196</span>
                 <span className="px-1.5 py-0.5 rounded bg-green-100 text-green-700 text-[10px] font-bold">Consensus Finalized</span>
               </div>
             </div>
@@ -82,7 +82,7 @@ export const Explorer: React.FC = () => {
             </button>
 
             <a
-              href={`https://preprod.midnight.network/tx/0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3`}
+              href={`https://midnight-preprod.subscan.io/extrinsic/0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196`}
               target="_blank"
               rel="noreferrer"
               className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#1F2BFF] text-white hover:bg-[#161EC7] transition-colors flex items-center gap-1.5"

@@ -74,7 +74,7 @@ export const connectMidnightWallet = async (
  * Fallback sandbox wallet for evaluations without the extension installed
  */
 export const createDemoWallet = (network: MidnightNetwork = 'preprod'): ConnectedWallet => {
-  const address = 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j';
+  const address = 'mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf';
   return {
     id: `demo-lace-${network}`,
     name: 'Midnight Lace (Simulator)',

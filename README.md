@@ -23,8 +23,8 @@
 |:---|:---:|:---|
 | **Public GitHub repository** | Done | [jitsuing/EduFund](https://github.com/jitsuing/EduFund) with complete architecture specs, Compact contracts, and setup guides. |
 | **Live Demo** | Ready | React 19 + Vite frontend dApp with Midnight Lace Wallet integration. |
-| **Contract Address (Preprod)** | Done | Preprod [`0xd5ea58d1...`](https://midnight-preprod.subscan.io/contract/0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3) / [`mn_addr_preprod1d5ea58d1...`](https://midnight-preprod.subscan.io/contract/0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3). See [Contract Address](#contract-address). |
-| **On-Chain Preprod Verification** | Done | On-chain verified DUST registration extrinsic [`0x1c06a162...`](https://midnight-preprod.subscan.io/extrinsic/0x1c06a16256cd3b1e7760676e36ebbf6a9abe58d4f2aca005daed39fe4ce9f3b8) mined in blocks `#2727927` & `#2727928`. |
+| **Contract Address (Preprod)** | Done | Preprod [`0x63afc2bc...`](https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318) / [`mn_addr_preprod163afc2bc...`](https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318). See [Contract Address](#contract-address). |
+| **On-Chain Preprod Verification** | Done | On-chain verified contract deployment extrinsic [`0x00033540...`](https://midnight-preprod.subscan.io/extrinsic/0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196) mined in blocks `#2751144` & `#2751145`. |
 | **Midnight Privacy Model** | Done | Dual-state ledger, private voucher commitments, and zero-knowledge nullifiers. See [Privacy Model](#privacy-model). |
 | **System Architecture** | Done | Dual-state machine, donor treasury, private vouchers, and merchant settlement flow. See [System Architecture](#system-architecture). |
 | **Tech Stack Specification** | Done | Compact smart contracts, Midnight Proof Server, React 19, TypeScript, Vitest. See [Tech Stack](#tech-stack). |
@@ -45,19 +45,20 @@
  Contract Module  : ./contracts/index.mjs
 
  [Latest Deployment - Midnight Preprod Testnet]
- Preprod Contract : 0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3
- Bech32m Address  : mn_addr_preprod1d5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7
- Deployer Wallet  : mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j
- Admin Authority  : 0xfe13f10d9175c242b3798beee0212a44ccdfb88a6b33224695d4cf3b3b149f61
- Subscan Explorer : https://midnight-preprod.subscan.io/contract/0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3
+ Preprod Contract : 0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318
+ Bech32m Address  : mn_addr_preprod163afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc
+ Deployer Wallet  : mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf
+ Admin Authority  : 0xc78d2c6a574ca650b017674bdc584beedefc3710f38cc9a732b986a4917b28ea
+ Subscan Explorer : https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318
 
  [Live On-Chain Extrinsics]
- DUST Extrinsic   : 0x1c06a16256cd3b1e7760676e36ebbf6a9abe58d4f2aca005daed39fe4ce9f3b8
- Mined In Blocks  : Block #2727927 and Block #2727928
+ Deploy Extrinsic : 0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196
+ Mined In Blocks  : Block #2751144 and Block #2751145
+ DUST Balance     : 46.79+ DUST (Epoch synchronized & UTXO registered)
 
  Active Circuits  : depositPool, registerMerchant, revokeMerchant, redeemGrant
  Pure Circuits    : deriveAdminPublicKey, deriveMerchantPublicKey
- Status           : 100% On-Chain Dual-State Architecture
+ Status           : 100% On-Chain Dual-State Architecture (Deployed)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -211,7 +212,7 @@ sequenceDiagram
 | Action | Circuit | Midnight Wallet Trigger | On-Chain Verification |
 |:---|:---:|:---|:---|
 | **Pay Merchant** | `redeemGrant` | `signData` + `makeTransfer` popups | Verifies vendor is in `approvedMerchants` whitelist, records nullifier to prevent double-spending, releases grant funds. |
-| **Deposit Pool** | `depositPool` | `signData` + `makeTransfer` popups | Transfers tNIGHT grant capital directly into the contract treasury pool (`0xd5ea58d1...`). |
+| **Deposit Pool** | `depositPool` | `signData` + `makeTransfer` popups | Transfers tNIGHT grant capital directly into the contract treasury pool (`0x63afc2bc...`). |
 | **Claim Voucher** | `claimGrant` | `signData` popup | Derives confidential student grant commitment and registers unspent voucher seed. |
 | **Accredit Vendor** | `registerMerchant` | `signData` popup | Authority signature verifies vendor credentials (GSTIN, trade license) and anchors node in registry. |
 

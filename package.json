@@ -11,8 +11,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy:preprod": "node --max-old-space-size=8192 ./scripts/deploy.js preprod",
-    "deploy:preview": "node --max-old-space-size=8192 ./scripts/deploy.js preview"
+    "deploy:preprod": "node --max-old-space-size=12288 --expose-gc ./scripts/deploy.js preprod",
+    "deploy:preview": "node --max-old-space-size=12288 --expose-gc ./scripts/deploy.js preview"
   },
   "dependencies": {
     "@midnight-ntwrk/compact-runtime": "^0.16.0",
@@ -26,11 +26,16 @@
     "@midnight-ntwrk/midnight-js-types": "^4.1.1",
     "@midnight-ntwrk/midnight-js-utils": "^4.1.1",
     "@midnight-ntwrk/testkit-js": "^4.1.1",
+    "@midnight-ntwrk/wallet-sdk": "1.2.0",
+    "@midnight-ntwrk/wallet-sdk-abstractions": "2.1.0",
+    "@polkadot/api": "^16.5.6",
+    "@polkadot/util": "^13.4.3",
     "clsx": "^2.1.1",
     "framer-motion": "^13.4.3",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-is": "^19.3.0",
     "react-router-dom": "^7.18.4",
     "recharts": "^3.10.1",
     "rxjs": "^7.8.2",

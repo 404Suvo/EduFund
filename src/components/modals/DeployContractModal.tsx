@@ -62,7 +62,7 @@ export const DeployContractModal: React.FC<DeployContractModalProps> = ({
     setDeployStep(5);
 
     // Step 5: Deployed
-    const newAddress = '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3';
+    const newAddress = '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318';
     setDeployedAddress(newAddress);
     setIsDeploying(false);
     onContractDeployed?.(newAddress);

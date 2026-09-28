@@ -46,7 +46,7 @@ export const WalletVerificationModal: React.FC<WalletVerificationModalProps> = (
   programOrMerchantName,
   amount,
   category,
-  recipientAddress = '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3',
+  recipientAddress = '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318',
   circuitName = 'redeemGrant',
   details = [],
 }) => {
@@ -56,7 +56,7 @@ export const WalletVerificationModal: React.FC<WalletVerificationModalProps> = (
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const activeWallet = walletAddress || 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j';
+  const activeWallet = walletAddress || 'mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf';
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);

@@ -61,9 +61,9 @@ export const DonorDashboard: React.FC = () => {
       id: `tx-dep-${Date.now()}`,
       hash: result.txHash,
       fromName: currentDonor.name,
-      fromAddress: walletAddress || 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j',
+      fromAddress: walletAddress || 'mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf',
       toName: 'EduFund Treasury Pool',
-      toAddress: '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3',
+      toAddress: '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318',
       category: 'Grant Capital',
       amount: depositAmount,
       status: 'Verified On-Chain',
@@ -439,7 +439,7 @@ export const DonorDashboard: React.FC = () => {
               <span className="font-mono text-[10px] text-slate-300">Preprod Testnet</span>
             </div>
             <div className="font-mono text-[11px] text-[#14F5B0] bg-white/10 p-2 rounded-lg break-all">
-              0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3
+              0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318
             </div>
             <p className="text-[11px] text-slate-300 leading-relaxed pt-1">
               Funds are programmatically locked into escrow. They can only be released to accredited educational merchants when a student generates a valid zero-knowledge proof.

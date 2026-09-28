@@ -46,9 +46,9 @@ export const PayMerchantModal: React.FC<PayMerchantModalProps> = ({
     const newTxId = `tx-${(transactions.length + 1).toString().padStart(2, '0')}`;
     const newTx: Transaction = {
       id: newTxId,
-      hash: onChainResult?.txHash || `0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3`,
+      hash: onChainResult?.txHash || `0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318`,
       fromName: `Student ${currentStudent.anonymizedId} (${currentStudent.name})`,
-      fromAddress: walletAddress || 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j',
+      fromAddress: walletAddress || 'mn_addr_preprod125dcrdsalkkhl5nf8mr4t0gv0y4sjjt6nl0f5dcxes43wqyxrlfqunh3gf',
       toName: selectedMerchant.name,
       toAddress: selectedMerchant.address,
       amount: amount,
@@ -261,12 +261,12 @@ export const PayMerchantModal: React.FC<PayMerchantModalProps> = ({
                 <span className="text-slate-400">Tx Hash:</span>
                 <div className="flex items-center gap-1.5">
                   <span className="text-slate-800 font-semibold font-mono text-[11px] break-all">
-                    {currentCreatedTx?.hash ? truncateHash(currentCreatedTx.hash) : '0xd5ea...0fbf3'}
+                    {currentCreatedTx?.hash ? truncateHash(currentCreatedTx.hash) : '0x63af...5d318'}
                   </span>
                   <button
                     type="button"
                     onClick={() => {
-                      copyToClipboard(currentCreatedTx?.hash || '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3');
+                      copyToClipboard(currentCreatedTx?.hash || '0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318');
                       setCopiedField('hash');
                       setTimeout(() => setCopiedField(null), 2000);
                     }}
@@ -291,7 +291,7 @@ export const PayMerchantModal: React.FC<PayMerchantModalProps> = ({
 
             <div className="flex flex-col sm:flex-row gap-2 pt-1">
               <a
-                href={`https://midnight-preprod.subscan.io/contract/0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3`}
+                href={`https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-[#0B1240] text-white hover:bg-[#151D56] transition-colors flex items-center justify-center gap-1.5"
