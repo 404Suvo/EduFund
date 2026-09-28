@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { MOCK_PROGRAMS, MOCK_TRANSACTIONS, ScholarshipProgram } from '../data/mockData';
+import { useWallet } from '../context/WalletContext';
+import { MOCK_PROGRAMS, ScholarshipProgram } from '../data/mockData';
 import { formatINR, formatNumberIN } from '../utils/format';
 import { Button } from '../components/common/Button';
 import { Badge } from '../components/common/Badge';
@@ -21,11 +22,12 @@ import {
 
 export const ProgramDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { transactions } = useWallet();
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
 
   const program = MOCK_PROGRAMS.find((p) => p.id === id) || MOCK_PROGRAMS[0];
 
-  const programTxs = MOCK_TRANSACTIONS.filter((t) => t.programId === program.id);
+  const programTxs = transactions.filter((t) => t.programId === program.id);
 
   const percentDistributed = Math.min(
     Math.round((program.disbursedAmount / program.totalPool) * 100),
@@ -234,7 +236,7 @@ export const ProgramDetail: React.FC = () => {
             </div>
           </div>
 
-          <TxTable transactions={programTxs.length > 0 ? programTxs : MOCK_TRANSACTIONS.slice(0, 5)} maxRows={8} />
+          <TxTable transactions={programTxs.length > 0 ? programTxs : transactions.slice(0, 5)} maxRows={8} />
         </div>
       </div>
 

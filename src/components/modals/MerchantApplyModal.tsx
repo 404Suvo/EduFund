@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Modal } from '../common/Modal';
 import { Button } from '../common/Button';
 import { useWallet } from '../../context/WalletContext';
-import { Store, CheckCircle2, ShieldCheck, Building2, FileText } from 'lucide-react';
+import { Store, CheckCircle2, ShieldCheck, Building2, FileText, ExternalLink } from 'lucide-react';
+import { WalletVerificationModal } from './WalletVerificationModal';
+import { type OnChainTransactionResult } from '../../midnight/contract';
+import { truncateHash } from '../../utils/format';
+import { type Transaction } from '../../data/mockData';
 
 interface MerchantApplyModalProps {
   isOpen: boolean;
@@ -13,7 +17,7 @@ export const MerchantApplyModal: React.FC<MerchantApplyModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { showToast } = useWallet();
+  const { showToast, addTransaction, walletAddress } = useWallet();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [businessName, setBusinessName] = useState('Apex Scientific Instruments & Books');
   const [category, setCategory] = useState('Tech & Labs');
@@ -21,20 +25,48 @@ export const MerchantApplyModal: React.FC<MerchantApplyModalProps> = ({
   const [gstin, setGstin] = useState('27AAACA1234A1Z5');
   const [address, setAddress] = useState('Near SP College, Sadashiv Peth, Pune 411030');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isVerifyingWithWallet, setIsVerifyingWithWallet] = useState(false);
+  const [merchantTxResult, setMerchantTxResult] = useState<OnChainTransactionResult | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (step < 3) {
       setStep((step + 1) as any);
     } else {
-      setIsSubmitted(true);
-      showToast('Merchant accreditation application submitted for review!');
+      setIsVerifyingWithWallet(true);
     }
+  };
+
+  const handleWalletConfirm = async (result?: OnChainTransactionResult) => {
+    setIsVerifyingWithWallet(false);
+    if (!result) return;
+
+    setMerchantTxResult(result);
+    setIsSubmitted(true);
+
+    const newTx: Transaction = {
+      id: `tx-merch-${Date.now()}`,
+      hash: result.txHash,
+      fromName: businessName,
+      fromAddress: walletAddress || 'mn_addr_preprod1cas900z8s709cja2k93a27lnz8z6l2cvfwxerwtlfzqt6fv3p3vqcx4d4j',
+      toName: 'EduFund Merchant Whitelist',
+      toAddress: '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3',
+      category: category,
+      amount: 0,
+      status: 'Verified On-Chain',
+      timestamp: 'Just now',
+      blockNumber: result.blockNumber,
+      programId: 'merchant-accreditation',
+      purpose: `Vendor Accreditation for ${businessName}`,
+    };
+    addTransaction(newTx);
+    showToast(`Merchant node application registered on-chain on Midnight Preprod!`);
   };
 
   const handleReset = () => {
     setStep(1);
     setIsSubmitted(false);
+    setMerchantTxResult(null);
     onClose();
   };
 
@@ -203,27 +235,79 @@ export const MerchantApplyModal: React.FC<MerchantApplyModalProps> = ({
           </div>
 
           <h4 className="text-2xl font-bold font-sans text-[#0B1240]">
-            Application Under Audit Review
+            Application &amp; Node Registered On-Chain!
           </h4>
           <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
-            Your establishment <strong>{businessName}</strong> ({city}) has been assigned verification ticket <strong>#EDUMERCH-8821</strong>.
+            Your establishment <strong>{businessName}</strong> ({city}) has been accredited and anchored on Midnight Preprod testnet.
           </p>
 
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-left space-y-1">
-            <div className="font-semibold text-[#0B1240]">Expected Turnaround: &lt; 24 Hours</div>
-            <div className="text-slate-500">Upon approval, your store will appear in the verified merchant directory, and your official QR terminal kit will be activated.</div>
-          </div>
+          {merchantTxResult ? (
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-left space-y-2 font-mono">
+              <div className="flex justify-between items-center text-slate-600">
+                <span>Extrinsic Hash:</span>
+                <span className="font-bold text-[#1F2BFF]">
+                  {truncateHash(merchantTxResult.txHash, 8, 6)}
+                </span>
+              </div>
+              <div className="flex justify-between items-center text-slate-600">
+                <span>Block Number:</span>
+                <span className="font-bold text-[#0B1240]">#{merchantTxResult.blockNumber}</span>
+              </div>
+              <div className="flex justify-between items-center text-slate-600">
+                <span>ZK Authority Witness:</span>
+                <span className="text-[#008A5E] font-bold">Verified • Preprod</span>
+              </div>
+            </div>
+          ) : (
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-left space-y-1">
+              <div className="font-semibold text-[#0B1240]">Expected Turnaround: &lt; 24 Hours</div>
+              <div className="text-slate-500">Upon approval, your store will appear in the verified merchant directory, and your official QR terminal kit will be activated.</div>
+            </div>
+          )}
 
-          <Button
-            variant="neo-lime"
-            size="md"
-            className="w-full"
-            onClick={handleReset}
-          >
-            Return to Merchant Directory
-          </Button>
+          <div className="flex items-center gap-3 pt-2">
+            {merchantTxResult?.txHash && (
+              <a
+                href={`https://midnight-preprod.subscan.io/extrinsic/${merchantTxResult.txHash}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 py-2.5 px-4 rounded-full bg-[#0B1240] hover:bg-[#1F2BFF] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+              >
+                <span>View on Midnight Subscan</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
+
+            <Button
+              variant="neo-lime"
+              size="md"
+              className={merchantTxResult?.txHash ? "flex-1 font-bold" : "w-full font-bold"}
+              onClick={handleReset}
+            >
+              Return to Directory
+            </Button>
+          </div>
         </div>
       )}
+
+      {/* Wallet Verification Modal for On-Chain Merchant Accreditation */}
+      <WalletVerificationModal
+        isOpen={isVerifyingWithWallet}
+        onClose={() => setIsVerifyingWithWallet(false)}
+        onConfirm={handleWalletConfirm}
+        transactionTitle="Merchant Accreditation On-Chain Anchor"
+        programOrMerchantName={businessName}
+        category={category}
+        amount={0}
+        circuitName="registerMerchant"
+        recipientAddress="0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3"
+        details={[
+          { label: 'Merchant Category', value: category },
+          { label: 'Campus Proximity City', value: city },
+          { label: 'GSTIN Registration', value: gstin },
+          { label: 'Smart Contract Whitelist', value: 'EduFund Vendor Registry' },
+        ]}
+      />
     </Modal>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useWallet } from '../context/WalletContext';
-import { MOCK_TRANSACTIONS } from '../data/mockData';
 import { TokenWalletCard } from '../components/cards/TokenWalletCard';
 import { TxTable } from '../components/sections/TxTable';
 import { PayMerchantModal } from '../components/modals/PayMerchantModal';

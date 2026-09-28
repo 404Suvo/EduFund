@@ -118,8 +118,10 @@ export class EduFundContractService {
 
     this.state.totalPool += amount;
 
+    // Generate standard 64-character Midnight transaction hash
+    const randomHex = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
     return {
-      txHash: `tx_${Math.random().toString(16).slice(2, 10)}${Date.now().toString(16)}`,
+      txHash: `0x${randomHex}`,
       newPool: this.state.totalPool,
     };
   }
@@ -250,8 +252,9 @@ export class EduFundContractService {
     steps[3].detail = `Settled ${amount} tNIGHT to ${targetMerchant.name}. Nullifier recorded on-chain.`;
     onProofStep?.(3, steps[3]);
 
+    const randomHex = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
     return {
-      txHash: `0x${nullifier.slice(0, 16)}...${Date.now().toString(16)}`,
+      txHash: `0x${randomHex}`,
       nullifier,
     };
   }

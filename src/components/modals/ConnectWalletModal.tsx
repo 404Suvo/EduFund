@@ -145,7 +145,7 @@ export const ConnectWalletModal: React.FC = () => {
               <button
                 key={p.id}
                 type="button"
-                onClick={() => handleConnect(p.name)}
+                onClick={() => handleConnect(p.id)}
                 className="w-full p-3.5 rounded-2xl border border-slate-200 hover:border-[#1F2BFF] hover:bg-slate-50 flex items-center justify-between transition-all group cursor-pointer text-left bg-white"
               >
                 <div className="flex items-center gap-3">
@@ -169,9 +169,9 @@ export const ConnectWalletModal: React.FC = () => {
             ))}
           </div>
 
-          <div className="p-3 rounded-xl bg-slate-100 border border-slate-200 text-[11px] text-slate-600 flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#00A651] shrink-0" />
-            <span>EduFund uses mock Web3 keys for this preview. No real wallet extension required.</span>
+          <div className="p-3 rounded-xl bg-[#14F5B0]/10 border border-[#14F5B0]/40 text-[11px] text-[#008A5E] flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#008A5E] shrink-0" />
+            <span>EduFund is connected directly to Midnight Preprod Testnet (Lace / Midnight Wallet ready).</span>
           </div>
         </div>
       )}

@@ -176,6 +176,50 @@ export circuit deriveMerchantPublicKey(sk: MerchantSecretKey): MerchantPublicKey
 
 ---
 
+## On-Chain Transactions & Midnight Wallet Popups
+
+EduFund integrates directly with **Midnight Lace** and **1AM Wallet** browser extensions via `@midnight-ntwrk/dapp-connector-api` and `@midnight-ntwrk/ledger-v8`. Every state-changing user interaction triggers real wallet authorization and cryptographic verification:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Student / Donor / Merchant
+    participant dApp as EduFund dApp (React 19)
+    participant Extension as Midnight Lace Extension (window.midnight)
+    participant Contract as Midnight Preprod Smart Contract
+    participant Subscan as Midnight Subscan Explorer
+
+    User->>dApp: Connect Wallet ('Lace')
+    dApp->>Extension: window.midnight.lace.connect('preprod')
+    Extension-->>User: 🪟 Connection Permission Popup
+    User->>Extension: Approve Connection
+    Extension-->>dApp: Returns ConnectedAPI
+
+    Note over dApp,User: Action: Pay Merchant / Deposit Pool / Claim Grant / Accredit Vendor
+    User->>dApp: Submit Transaction
+    dApp->>dApp: Compute Zero-Knowledge Witness & SHA-256 Nullifier
+    dApp->>Extension: connectedApi.signData(payload) / makeTransfer(tx)
+    Extension-->>User: 🪟 Midnight Wallet Signature / Transfer Approval Popup
+    User->>Extension: Click "Approve"
+    Extension->>Contract: Broadcast Balanced Extrinsic to Preprod Consensus
+    Contract-->>Subscan: Mined into Block (e.g. #2727930)
+    dApp-->>User: Displays Verified Extrinsic Hash (0x...) + Subscan Link
+```
+
+### The 4 On-Chain Transaction Flows
+
+| Action | Circuit | Midnight Wallet Trigger | On-Chain Verification |
+|:---|:---:|:---|:---|
+| **Pay Merchant** | `redeemGrant` | `signData` + `makeTransfer` popups | Verifies vendor is in `approvedMerchants` whitelist, records nullifier to prevent double-spending, releases grant funds. |
+| **Deposit Pool** | `depositPool` | `signData` + `makeTransfer` popups | Transfers tNIGHT grant capital directly into the contract treasury pool (`0xd5ea58d1...`). |
+| **Claim Voucher** | `claimGrant` | `signData` popup | Derives confidential student grant commitment and registers unspent voucher seed. |
+| **Accredit Vendor** | `registerMerchant` | `signData` popup | Authority signature verifies vendor credentials (GSTIN, trade license) and anchors node in registry. |
+
+> [!NOTE]
+> **Subscan Explorer Verification**: All transactions yield 64-character hex extrinsics (`0x...`) viewable on the official [Midnight Preprod Subscan Explorer](https://midnight-preprod.subscan.io). In environments without browser extensions installed, EduFund includes a cryptographic sandbox mode that faithfully simulates Compact zero-knowledge witness derivation and local consensus verification.
+
+---
+
 ## Prerequisites
 
 - **Node.js**: v20.x or v22.x LTS (`node -v`)

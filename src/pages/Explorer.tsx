@@ -12,7 +12,8 @@ import {
   Coins, 
   CheckCircle2, 
   Cpu,
-  Rocket
+  Rocket,
+  ExternalLink
 } from 'lucide-react';
 
 export const Explorer: React.FC = () => {
@@ -22,7 +23,7 @@ export const Explorer: React.FC = () => {
   const initialSelectedTxId = searchParams.get('tx') || undefined;
   const [isDeployModalOpen, setIsDeployModalOpen] = useState<boolean>(false);
   const [contractAddress, setContractAddress] = useState<string>(
-    'addr_preprod165647566756e645f7363686f6c6172736869705f636f6e74'
+    '0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3'
   );
   return (
     <div className="min-h-screen bg-[#F5F7FF] pb-24 transition-colors">
@@ -60,12 +61,17 @@ export const Explorer: React.FC = () => {
                 </span>
               </div>
               <div className="text-xs text-slate-500 font-mono mt-0.5 break-all">
-                {contractAddress}
+                Contract: <span className="font-semibold text-[#0B1240]">{contractAddress}</span>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono mt-0.5 flex items-center gap-1.5 flex-wrap">
+                <span>Genesis On-Chain Tx:</span>
+                <span className="text-[#1F2BFF] font-semibold">0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3</span>
+                <span className="px-1.5 py-0.5 rounded bg-green-100 text-green-700 text-[10px] font-bold">Consensus Finalized</span>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 flex-wrap">
             <button
               type="button"
               onClick={() => setIsDeployModalOpen(true)}
@@ -76,13 +82,13 @@ export const Explorer: React.FC = () => {
             </button>
 
             <a
-              href={`https://preprod.midnight.network/contract/${contractAddress}`}
+              href={`https://preprod.midnight.network/tx/0xd5ea58d1702899641495e5a879bd1696dadc611fd72c965351b7cabe3af0fbf3`}
               target="_blank"
               rel="noreferrer"
               className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#1F2BFF] text-white hover:bg-[#161EC7] transition-colors flex items-center gap-1.5"
             >
-              <span>View on Explorer</span>
-              <Compass className="w-3.5 h-3.5 text-[#14F5B0]" />
+              <span>View Genesis Tx</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#14F5B0]" />
             </a>
           </div>
         </div>

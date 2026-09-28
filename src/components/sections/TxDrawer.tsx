@@ -193,17 +193,15 @@ export const TxDrawer: React.FC<TxDrawerProps> = ({
             >
               Close
             </Button>
-            <Button
-              variant="primary"
-              size="md"
-              className="flex-1"
-              iconRight={<ExternalLink className="w-4 h-4" />}
-              onClick={() => {
-                alert(`On-chain state confirmed on block #${tx.blockNumber}. Hash verified.`);
-              }}
+            <a
+              href={`https://preprod.midnight.network/tx/${tx.hash}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl font-bold text-xs bg-[#1F2BFF] text-white hover:bg-[#161EC7] transition-colors"
             >
-              Verify On-Chain
-            </Button>
+              <span>Verify on Explorer</span>
+              <ExternalLink className="w-4 h-4 text-[#14F5B0]" />
+            </a>
           </div>
         </div>
       </div>
