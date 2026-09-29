@@ -1,8 +1,12 @@
-# EduFund
-
 <div align="center">
 
-  [![CI](https://github.com/jitsuing/EduFund/actions/workflows/ci.yml/badge.svg)](https://github.com/jitsuing/EduFund/actions/workflows/ci.yml)
+  <img src="assets/logo.png" alt="EduFund Logo" width="160" />
+
+  # EduFund
+
+  [![CI/CD](https://github.com/404Suvo/EduFund/actions/workflows/ci.yml/badge.svg)](https://github.com/404Suvo/EduFund/actions/workflows/ci.yml)
+  [![Live Demo](https://img.shields.io/badge/Live%20Demo-edu--fund--ten.vercel.app-000000?style=flat&logo=vercel&logoColor=white)](https://edu-fund-ten.vercel.app)
+  [![X Profile](https://img.shields.io/badge/X%20Profile-@Subhaji22461638-000000?style=flat&logo=x&logoColor=white)](https://x.com/Subhaji22461638)
   ![Midnight](https://img.shields.io/badge/Midnight-Preprod-06b6d4?style=flat&logo=blockchain&logoColor=white)
   ![On-Chain Activity](https://img.shields.io/badge/Midnight%20Preprod-On--Chain%20Verified-10b981?style=flat&logo=polkadot&logoColor=white)
   ![Contracts Tests](https://img.shields.io/badge/Contracts%20Tests-5%2F5%20Passing-emerald?style=flat&logo=vitest&logoColor=white)
@@ -13,6 +17,10 @@
     <strong>Decentralized, privacy-preserving scholarship and educational grant distribution platform powered by Midnight zero-knowledge smart contracts and dual-state ledger architecture.</strong>
   </p>
 
+  <p align="center">
+    🌐 <strong>Live Application:</strong> <a href="https://edu-fund-ten.vercel.app" target="_blank"><strong>https://edu-fund-ten.vercel.app</strong></a> &nbsp;|&nbsp; 🎬 <strong>Demo Video:</strong> <a href="https://res.cloudinary.com/u0zkue69/video/upload/v1790676966/Recording_2026-09-29_154002_ev09q2.mp4" target="_blank"><strong>Watch Walkthrough</strong></a> &nbsp;|&nbsp; 🐦 <strong>X:</strong> <a href="https://x.com/Subhaji22461638" target="_blank"><strong>@Subhaji22461638</strong></a>
+  </p>
+
 </div>
 
 ---
@@ -21,16 +29,32 @@
 
 | Requirement | Status | Evidence / Details |
 |:---|:---:|:---|
-| **Public GitHub repository** | Done | [jitsuing/EduFund](https://github.com/jitsuing/EduFund) with complete architecture specs, Compact contracts, and setup guides. |
-| **Live Demo** | Ready | React 19 + Vite frontend dApp with Midnight Lace Wallet integration. |
-| **Contract Address (Preprod)** | Done | Preprod [`0x63afc2bc...`](https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318) / [`mn_addr_preprod163afc2bc...`](https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318). See [Contract Address](#contract-address). |
-| **On-Chain Preprod Verification** | Done | On-chain verified contract deployment extrinsic [`0x00033540...`](https://midnight-preprod.subscan.io/extrinsic/0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196) mined in blocks `#2751144` & `#2751145`. |
+| **Public GitHub repository with full documentation** | Done | [404Suvo/EduFund](https://github.com/404Suvo/EduFund) with complete architecture specs, Compact contracts, [USAGE.md](docs/USAGE.md), and [PROPOSAL.md](PROPOSAL.md). |
+| **Live Preprod demo link + contract address** | Done | • **Live Demo**: [https://edu-fund-ten.vercel.app](https://edu-fund-ten.vercel.app)<br>• **Contract Address**: [`0x63afc2bc...`](https://midnight-preprod.subscan.io/contract/0x63afc2bc0e0fe25a19f87439f1e3616fc4d6f5651f9d2c6033fc0fb125e5d318) (`mn_addr_preprod163afc2bc...`) with deployment extrinsic [`0x00033540...`](https://midnight-preprod.subscan.io/extrinsic/0x000335408dd2eab2071fe94d39d0030e82f1c44ab23800df7e469a845ac7c196). See [Contract Address](#contract-address). |
+| **CI/CD badge or workflow file with passing runs** | Done | [![CI/CD](https://github.com/404Suvo/EduFund/actions/workflows/ci.yml/badge.svg)](https://github.com/404Suvo/EduFund/actions/workflows/ci.yml) configured in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) (automated Compact toolchain, Vitest suite, and build validation). |
+| **Link to the product X profile** | Done | [@Subhaji22461638](https://x.com/Subhaji22461638) — Developer & Project Creator profile. |
+| **Demo video of the MVP** | Done | [Watch MVP Demo Video](https://res.cloudinary.com/u0zkue69/video/upload/v1790676966/Recording_2026-09-29_154002_ev09q2.mp4) — End-to-end walkthrough on Midnight Preprod (see [Demo Video](#demo-video)). |
+| **Minimum 15 meaningful commits** | Done | **21 commits** on [`main`](https://github.com/404Suvo/EduFund/commits/main) with granular Git history tracking contracts, ZK circuits, tests, UI, and CI/CD pipelines. |
 | **Midnight Privacy Model** | Done | Dual-state ledger, private voucher commitments, and zero-knowledge nullifiers. See [Privacy Model](#privacy-model). |
 | **System Architecture** | Done | Dual-state machine, donor treasury, private vouchers, and merchant settlement flow. See [System Architecture](#system-architecture). |
 | **Tech Stack Specification** | Done | Compact smart contracts, Midnight Proof Server, React 19, TypeScript, Vitest. See [Tech Stack](#tech-stack). |
 | **Automated Test Suite** | Done | 5/5 passing unit tests verifying pool deposits, merchant accreditations, grant redemptions, and double-spend protection. |
-| **CI/CD Workflow** | Done | GitHub Actions [ci.yml](.github/workflows/ci.yml) compiles Compact, runs Vitest, and tests production build. |
-| **Comprehensive Usage Guide** | Done | Detailed step-by-step documentation in [docs/USAGE.md](docs/USAGE.md) and [PROPOSAL.md](PROPOSAL.md). |
+
+---
+
+## Demo Video
+
+Watch the complete walkthrough demonstrating contract deployment, donor funding, accredited merchant management, and zero-knowledge grant redemption on the Midnight Network:
+
+<div align="center">
+  <video src="https://res.cloudinary.com/u0zkue69/video/upload/v1790676966/Recording_2026-09-29_154002_ev09q2.mp4" controls width="100%" style="max-width: 850px; border-radius: 8px;">
+    Your browser does not support the video tag.
+  </video>
+
+  <p>
+    🎬 <a href="https://res.cloudinary.com/u0zkue69/video/upload/v1790676966/Recording_2026-09-29_154002_ev09q2.mp4" target="_blank"><strong>Click here to open and watch the demo video directly</strong></a>
+  </p>
+</div>
 
 ---
 
@@ -229,6 +253,7 @@ sequenceDiagram
 - **Compact Compiler**: Installed via:
   ```bash
   curl --proto '=https' --tlsv1.2 -LsSf https://github.com/midnightntwrk/compact/releases/latest/download/compact-installer.sh | sh
+  compact update 0.31.1
   ```
 
 ---
@@ -237,7 +262,7 @@ sequenceDiagram
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/jitsuing/EduFund.git
+git clone https://github.com/404Suvo/EduFund.git
 cd EduFund
 ```
 
@@ -305,3 +330,12 @@ Continuous Integration is configured in [`.github/workflows/ci.yml`](.github/wor
 
 - [Detailed Usage Guide (Students, Donors & Institutions)](docs/USAGE.md)
 - [Complete Product Proposal](PROPOSAL.md)
+
+---
+
+## Community & Author
+
+- **X (Twitter)**: [@Subhaji22461638](https://x.com/Subhaji22461638)
+- **GitHub**: [404Suvo](https://github.com/404Suvo)
+- **Repository**: [404Suvo/EduFund](https://github.com/404Suvo/EduFund)
+- **Live dApp**: [https://edu-fund-ten.vercel.app](https://edu-fund-ten.vercel.app)
