@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Shield, HeartHandshake, Settings, ExternalLink, FileText } from 'lucide-react';
+import { Shield, HeartHandshake, Settings, ExternalLink, FileText } from 'lucide-react';
 import { WalletConnect } from './WalletConnect';
 
 interface Props {
@@ -16,8 +16,8 @@ export const Layout: React.FC<Props> = ({ children, userRole, setUserRole }) => 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#1F2BFF] text-white shadow-md shadow-[#1F2BFF]/20">
-              <GraduationCap className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/80 p-0.5 flex items-center justify-center shadow-sm overflow-hidden">
+              <img src="/logo.png" alt="EduFund Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">

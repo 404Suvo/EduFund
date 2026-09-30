@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GraduationCap, ShieldCheck, Heart, Send, MessageSquare } from 'lucide-react';
+import { ShieldCheck, Heart, Send, MessageSquare } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,9 +9,9 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand info */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#1F2BFF] flex items-center justify-center text-white shadow-lg">
-                <GraduationCap className="w-6 h-6 text-[#14F5B0]" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-white p-0.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+                <img src="/logo.png" alt="EduFund Logo" className="w-full h-full object-contain" />
               </div>
               <span className="font-display text-3xl tracking-wider text-white">
                 EDUFUND
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
             {/* Social Icons in circular buttons */}
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://twitter.com"
+                href="https://x.com/Subhaji22461638"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#1F2BFF] hover:scale-110 flex items-center justify-center text-white transition-all cursor-pointer"
@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
                 <Send className="w-4 h-4" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/404Suvo/EduFund"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#1F2BFF] hover:scale-110 flex items-center justify-center text-white transition-all cursor-pointer"
